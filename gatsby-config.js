@@ -24,9 +24,7 @@ module.exports = {
   {
     resolve: 'gatsby-plugin-svgr-loader',
     options: {
-        
-          path: "./src/images"
-        
+      path: "./src/images"
     }
 }]
 };
