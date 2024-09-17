@@ -2,6 +2,7 @@ import * as React from "react"
 import Learn from "../images/learn.svg";
 import Model from "../images/model.svg";
 import Explore from "../images/explore.svg";
+import { StaticImage } from "gatsby-plugin-image"
 import khulna from "../images/khulna.png";
 import makerere from "../images/makerere.png";
 import venthic from "../images/venthic.png";
@@ -125,10 +126,10 @@ const IndexPage = () => {
         <div className={"pt-24 w-full container mx-auto"}>
             <h4 className="font-body text-sand-grey uppercase font-bold">Partners</h4>
             <div className="md:grid-cols-4 grid gap-24">
-              <div className="flex-column mx-auto self-center"><img style={{width: "100%"}} src={wur}/></div>
-              <div className="flex-column mx-auto self-center"><img  style={{height: "105px", width: "auto"}} src={khulna}/></div>
-              <div className="flex-column mx-auto self-center"><img  style={{height: "115px", width: "auto"}} src={makerere}/></div>
-              <div className="flex-column mx-auto self-center"><a href="https://www.venthic.com"><img style={{height: "28px", width: "auto"}} src={venthic}/></a></div>
+              <div className="flex-column mx-auto self-center"><StaticImage src="../images/wur.png"/></div>
+              <div className="flex-column mx-auto self-center"><StaticImage src="../images/khulna.png" imgStyle={{ height:"105px", width: 'auto', marginLeft: 'auto', marginRight: 'auto', marginTop:'60px' }}/></div>
+              <div className="flex-column mx-auto self-center"><StaticImage src="../images/makerere.png" imgStyle={{ height:"105px", width: 'auto', marginLeft: 'auto', marginRight: 'auto', marginTop:'50px' }}/></div>
+              <div className="flex-column mx-auto self-center"><a href="https://www.venthic.com"><StaticImage src="../images/venthic.png"/></a></div>
             </div>
             <div className="pb-12 mt-12">
               <h4 className="font-body text-sand-grey uppercase font-bold">Funded by</h4>
