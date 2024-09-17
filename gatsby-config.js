@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: "waterpath-web",
   siteMetadata: {
     title: `WaterPath Web`,
-    siteUrl: `waterpath-project.github.io/waterpath-web/`
+    siteUrl: `https://waterpath-project.github.io/waterpath-web/`
   },
   plugins: ["gatsby-plugin-postcss", "gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-mdx", "gatsby-transformer-remark", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
