@@ -118,7 +118,7 @@ const IndexPage = () => {
             </div>
             <div className="pb-12 mt-12">
               <h4 className="font-body text-sand-grey uppercase font-bold">Funded by</h4>
-              <p>The WaterPath Toolkit has received funded by the Wellcome Trust Foundation, (Grant XXXXXXX)</p>
+              <p>The WaterPath Toolkit has received funded by the Wellcome Trust Foundation, (Grant a)</p>
             </div>
         </div>
       </div>
