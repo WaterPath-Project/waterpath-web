@@ -2,6 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: 'waterpath-web',
   siteMetadata: {
     title: `WaterPath Web`,
     siteUrl: `https://waterpath-project.github.io/`
