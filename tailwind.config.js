@@ -17,14 +17,26 @@ module.exports = {
       xl: '1260px',
     },
     colors: {
-      'blue': '#0B4159',
-      'green': '#8DD0A4',
+      'blue': {
+        300: '#096890',
+        500: '#0B4159',
+        700: '#143543'
+      },
+      'green': {
+        500: '#8DD0A4',
+        700: '#6DF69C',
+        900: '#62B27D',
+      },
       'back-white': '#F6F9FB',
       'white': '#ffffff',
-      'sand': '#F2EFE6',
-      'sand-grey': '#757676',
-      'dead-grey': 'rgb(233, 233, 233)',
-      'dead-grey-2': '#c9c9c9'
+      'sand': {
+        100: 'rgb(233, 233, 233)',
+        300: '#c9c9c9',
+        500: '#F2EFE6',
+        700: '#757676',
+        800: '#FFE597',
+        900: '#BDA457'
+      }
     },
     fontFamily: {
       header: ["Outfit", ...defaultTheme.fontFamily.sans],
