@@ -21,11 +21,11 @@ const DocPage = ({ data, pageContext }) => {
   const date = new Date(data.site.buildTime)
   return (
     <Layout>
-      <div className="container doc-page mx-auto mb-20 mt-32">
+      <div className="px-4 sm:px-6 doc-page mx-auto mb-20 mt-32">
       <div className="flex flex-col-reverse items-start md:flex-row md:justify-between md:items-end mb-16 mx-4 ">
       <div className="flex flex-col">
-        <span class="font-header text-green-500 font-extrabold text-xl"><Link to='/'>WATERPATH TOOLKIT</Link> / <Link to='/learn'>LEARN</Link></span>
-        <span className="font-body text-blue-500 font-extralight text-[5.5rem] leading-none tracking-tight -ml-[10px]">
+        <span class="font-header text-green-500 font-extrabold text-xl xs:mt-24"><Link to='/'>WATERPATH TOOLKIT</Link> / <Link to='/learn'>LEARN</Link></span>
+        <span className="font-body text-blue-500 font-extralight xs:text-[3rem] sm:text-[5.5rem] leading-none tracking-tight -ml-[10px]">
           {pageContext.title}
         </span>
 

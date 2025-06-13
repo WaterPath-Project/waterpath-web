@@ -14,6 +14,10 @@ const links = [
     {
       text: "Model",
       url: "/model"
+    },
+    {
+      text: "Contact",
+      url: "/contact"
     }
 
   ]
@@ -59,16 +63,18 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
-       <div className="absolute left-1/2 transform -translate-x-1/2">
-         <Link to="/" className="flex items-center space-x-3 ">
+       <div className="absolute left-1/2 transform -translate-x-1/2 xs:ml-4">
+         <Link to="/" className="flex items-center space-x-3">
              <h1 className="text-blue-500 font-header text-4xl tracking-wider font-bold"><span className="mr-0.5 text-green-500">Water</span>Path</h1>
          </Link>
        </div>
        <div className="max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
          <ul className="flex flex-col pt-4 mt-4 text-sm border border-gray-100 rounded-lg bg-gray-50 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-           { links.map((link) => { return <li>
-             <Link to={link.url} className="block px-3 font-body font-semibold text-blue-500 hover:text-blue-300 focus:text-blue-700" aria-current="page">{link.text}</Link>
-           </li>})}
+           { links.map((link) => { 
+               return <li>
+                <Link to={link.url} className="block px-3 font-body font-semibold text-blue-500 hover:text-blue-300 focus:text-blue-700" aria-current="page">{link.text}</Link>
+              </li>
+          })}
          </ul>
        </div>
        <div className="flex space-x-4">
@@ -87,7 +93,8 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden px-4 pb-4">
             <ul className="flex flex-col pt-4 mt-4 text-sm md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-          { links.map((link) => { return <li><Link to={link.url} className="block px-3 font-body font-semibold text-blue-500 hover:text-blue-300 focus:text-blue-700" aria-current="page">{link.text}</Link></li>})}
+          { links.map((link) => { return <li><Link to={link.url} className="block px-3 font-body font-semibold text-blue-500 hover:text-blue-300 focus:text-blue-700 text-lg border-b-2 border-sand-100" aria-current="page">{link.text}</Link></li>})}
+          
           </ul>
            
         </div>

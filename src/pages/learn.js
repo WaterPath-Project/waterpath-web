@@ -14,7 +14,7 @@ const LearnPage = ({data}) => {
 ]
   return (
     <Layout>
-        <div className="container mx-auto flex flex-col mb-20 mt-36">
+        <div className="container mx-auto flex flex-col sm:px-6 mb-20 mt-36">
   <div className="flex flex-col-reverse items-start md:flex-row md:justify-between md:items-center mb-16 mx-4 ">
       <div className="flex flex-col pt-12">
         

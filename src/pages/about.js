@@ -34,7 +34,7 @@ export default () => {
                 <li><b>Wageningen University</b>, represented by P.I. Dr. <span className="text-green-500 font-bold">Nynke Hofstra</span>, postdoc Dr. <span className="text-green-500 font-bold">Stijn Peters</span> and model developer and programmer <span className="text-green-500 font-bold">Lisanne Nauta</span> from the Water Systems and Global Change group. The team brings the GloWPa model to the project and leads the overall project activities and GloWPa extensions. </li>
                 <li><b><a href="https://venthic.com">Venthic Technologies</a></b>, represented by <span className="text-green-500 font-bold">Panagis Katsivelis</span> and other team members. Venthic develops the user-facing side of the Toolkit, ie. all the digital tools that to be used by stakeholders. The team also provides guidance on aspects of data management and open source practices.</li>
                 <li><b>Khulna University</b>, represented by Prof. <span className="text-green-500 font-bold">Wasim Sabir</span> and postdoc M.M. <span className="text-green-500 font-bold">Majedul Islam</span> from the Environmental Science Discipline The team brings experience with water quality modelling, in addition to experience in developing the QMRA part of the model. Khulna University will help implement use cases for Bangladesh and will work with engaging relevant stakeholders.</li> 
-                <li><b>Makerere University</b>, represented by Dr. <span className="text-green-500 font-bold">Richard Mugambe</span> and postdoc <span className="text-green-500 font-bold">Daniel Okaali</span> from the School of Public Health. The brings expertise in public health and exposure assessment, together with experience of using the GloWPa model in socio-economic development and climate change scenario analysis and risk assessment in Uganda. Makerere University will also develop the Concentrations part of the model and will engage with local stakeholders in Uganda.</li>.  
+                <li><b>Makerere University</b>, represented by Dr. <span className="text-green-500 font-bold">Richard Mugambe</span> and postdoc <span className="text-green-500 font-bold">Daniel Okaali</span> from the School of Public Health. The team brings expertise in public health and exposure assessment, together with experience of using the GloWPa model in socio-economic development and climate change scenario analysis and risk assessment in Uganda. Makerere University will also develop the Concentrations part of the model and will engage with local stakeholders in Uganda.</li>  
               </ul>
               </p>
               <div  className="flex justify-center">
@@ -42,9 +42,14 @@ export default () => {
                 src="../images/team.jpg"
                 alt="Team"
                 placeholder="blurred"
-                width={400}
+                width={520}
               />
               </div>
+              <h2 className="text-blue-500 font-body font-medium text-2xl mb-4 mt-12">Who is funding the WaterPath Toolkit development?</h2>
+              
+              
+              <p className="text-blue-500 font-body mb-2 font-medium mb-8">The WaterPath Toolkit has received funding by the Wellcome Trust Foundation (Grant ref.: 226078/Z/22/Z).</p>
+              
             </div>
           
             <div className="md:col-span-3">

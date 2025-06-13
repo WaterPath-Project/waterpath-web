@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className="pb-6 mt-12">
           <h4 className="font-body text-sand-700 uppercase font-bold">Funded by</h4>
-          <p className="mt-6 font-body font-medium text-sm">The WaterPath Toolkit has received funded by the Wellcome Trust Foundation (Grant ref.: 226078/Z/22/Z).</p>
+          <p className="mt-6 font-body font-medium text-sm">The WaterPath Toolkit has received funding by the Wellcome Trust Foundation (Grant ref.: 226078/Z/22/Z).</p>
         </div>
     </div>
   </div>
