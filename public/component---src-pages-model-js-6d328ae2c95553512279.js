@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwaterpath_web=self.webpackChunkwaterpath_web||[]).push([[288],{35490:function(t,e,a){a.r(e),a.d(e,{Head:function(){return n}});var l=a(96540),r=a(54447);e.default=()=>l.createElement(r.A,null,l.createElement("iframe",{className:"mt-40",loading:"lazy",height:1500,width:"100%",src:"https://waterpath-project.github.io/waterpath-data-integration-tool/"}));const n=()=>l.createElement("title",null,"WaterPath Toolkit - Model")}}]);
+//# sourceMappingURL=component---src-pages-model-js-6d328ae2c95553512279.js.map
