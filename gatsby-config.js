@@ -25,12 +25,6 @@ module.exports = {
     }
   },
   {
-    resolve: '@nteract/gatsby-transformer-ipynb',
-    options: {
-      extensions: ['.ipynb']
-    }
-  },
-  {
     resolve: 'gatsby-plugin-alias-imports',
     options: {
       alias: {
@@ -67,6 +61,12 @@ module.exports = {
           resolve: `gatsby-remark-images`,
           options: {
             maxWidth: 590,
+          },
+        },
+        {
+          resolve: `gatsby-remark-copy-linked-files`,
+          options: {
+            ignoreFileExtensions: [],
           },
         },
       ],

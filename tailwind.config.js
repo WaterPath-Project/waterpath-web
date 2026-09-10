@@ -32,6 +32,9 @@ module.exports = {
       },
       'back-white': '#F6F9FB',
       'white': '#ffffff',
+      'wpGray': {
+        100: '#EEF2F5',
+      },
       'sand': {
         100: 'rgb(233, 233, 233)',
         300: '#c9c9c9',

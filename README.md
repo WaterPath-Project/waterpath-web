@@ -19,9 +19,9 @@
 
     ```shell
     cd waterpath-web/
-    yarn install
-    yarn prebuild
-    yarn start
+    npm install
+    npm run prebuild
+    npm run develop
     ```
 
 3.  **Open the code and start customizing!**

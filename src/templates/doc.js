@@ -58,11 +58,11 @@ const DocPage = ({ data, pageContext }) => {
 
               {(schemas.map((schema, i) => {
                 const data = JSON.parse(schema.node.data.raw)
-                return <div>
-                  <a href="#viewer" onClick={() => setSelectedSchema(i)} className={"m-auto h-[120px] text-center pt-8 text-lg line-clamp-2 align-middle max-w-sm p-6 rounded-lg shadow-sm bg-sand-500 hover:bg-sand-800" + ((i === selectedSchema) ? ' bg-sand-800' : '')}>
-
-                    <h5 className="mb-12 font-bold tracking-tight text-blue-500">{data.title}</h5>
-                  </a>
+                return <div key={schema.node.filename} className={`bg-wpGray-100 rounded-2xl p-10 flex ${i === selectedSchema ? "ring-2 ring-green-500" : ""}`}>
+                  <button type="button" onClick={() => setSelectedSchema(i)} className="w-full flex items-center justify-between gap-6 text-left">
+                    <h5 className="font-bold tracking-tight text-blue-500">{data.title}</h5>
+                    {schema.node.data.iconUrl && <img src={schema.node.data.iconUrl} alt="" className="w-12 h-12 shrink-0 object-contain" />}
+                  </button>
                 </div>
               })
               )}
@@ -91,7 +91,8 @@ const DocPage = ({ data, pageContext }) => {
   data = p.node.data
   return <div>
     <a href={'https://github.com/WaterPath-Project/waterpath-data/tree/main/'+data.parent+''} className={"block group mb-6 w-full pt-8 text-lg line-clamp-2 align-middle p-6 rounded-lg shadow-sm bg-white border hover:border-sand-100" }>
-    <div className="relative">        <div className="absolute top-0 right-0"></div>
+    <div className="relative pr-20">
+      {data.iconUrl && <img src={data.iconUrl} alt="" className="absolute top-0 right-0 w-14 h-14 object-contain" />}
       <h5 className="font-bold tracking-tight text-blue-500 flex flex-row items-center"><span className="group-hover:underline mr-1">{data.title}</span> <FiArrowRight className="text-sand-500 group-hover:text-blue-500"/></h5>
       <p className="font-body text-blue-500 text-sm font-medium">{data.description}</p>
       </div>

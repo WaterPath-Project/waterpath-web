@@ -1,6 +1,35 @@
 const path = require("path")
 const fs = require("fs")
 
+const loadCategoryIcons = () => {
+  const categoriesPath = path.resolve(__dirname, "external-repos/waterpath-learning-materials/data/categories.json")
+  const categories = JSON.parse(fs.readFileSync(categoriesPath, "utf-8"))
+  const categoryIcons = new Map()
+
+  for (const category of categories) {
+    categoryIcons.set(category.machine_name, category.icon)
+    for (const subcategory of category.subcategories || []) {
+      categoryIcons.set(subcategory.machine_name, subcategory.icon)
+    }
+  }
+
+  return categoryIcons
+}
+
+const getSchemaSubcategory = filename => {
+  const name = path.basename(filename, path.extname(filename))
+
+  if (name.startsWith("human_emissions")) {
+    if (name.includes("sanitation")) return "sanitation"
+    if (name.includes("treatment")) return "wastewater_treatment"
+    return "population"
+  }
+
+  if (name.includes("production_systems")) return "production_systems"
+  if (name.includes("manure")) return "manure_management"
+  return "livestock_population"
+}
+
 toJsonSchema = (tableData) => {
   var props = {}
   for ( var f in tableData['fields'] ) {
@@ -87,6 +116,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }
   `)
+
+  const schemaCategoryOrder = ["human_emissions", "livestock"]
+  const sortedSchemaData = [...schema_result.data.allJsonSchema.edges].sort((left, right) => {
+    const categoryIndex = schema => schemaCategoryOrder.findIndex(category =>
+      path.basename(schema.node.filename).startsWith(category)
+    )
+    const leftCategory = categoryIndex(left)
+    const rightCategory = categoryIndex(right)
+
+    if (leftCategory !== rightCategory) {
+      return leftCategory - rightCategory
+    }
+
+    return left.node.data.title.localeCompare(right.node.data.title)
+  })
   
   const package_result = await graphql(`
   {
@@ -97,6 +141,7 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             description
             parent
+            icon
             license {
               path
               name
@@ -110,8 +155,38 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
+    allFile(filter: {
+      sourceInstanceName: {eq: "waterpath-learning-materials"}
+      relativeDirectory: {eq: "data/figures"}
+    }) {
+      nodes {
+        base
+        publicURL
+      }
+    }
       }
   `)
+
+  const iconUrls = new Map(package_result.data.allFile.nodes.map(file => [file.base, file.publicURL]))
+  const categoryIcons = loadCategoryIcons()
+  const schemaData = sortedSchemaData.map(({ node }) => ({
+    node: {
+      ...node,
+      data: {
+        ...node.data,
+        iconUrl: iconUrls.get(categoryIcons.get(getSchemaSubcategory(node.filename))) || null,
+      },
+    },
+  }))
+  const packageData = package_result.data.allDataPackage.edges.map(({ node }) => ({
+    node: {
+      ...node,
+      data: {
+        ...node.data,
+        iconUrl: iconUrls.get(node.data.icon) || null,
+      },
+    },
+  }))
 
   // const notebook_result = await graphql(`
   // {
@@ -251,7 +326,7 @@ exports.createPages = async ({ graphql, actions }) => {
           context: {
             id: node.id,
             title: 'Data explanation',
-            schemaData: schema_result.data.allJsonSchema.edges,
+            schemaData,
             packageData: []
           },
         })
@@ -267,7 +342,7 @@ exports.createPages = async ({ graphql, actions }) => {
             id: node.id,
             title: 'Data sources',
             schemaData: [],
-            packageData: package_result.data.allDataPackage.edges,
+            packageData,
           },
         })
       }
@@ -279,6 +354,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
   const { createNode } = actions
   const schemaDir = path.resolve(__dirname, "external-repos/waterpath-data-schemas")
   const schemaFiles = fs.readdirSync(schemaDir)
+  const categoryIcons = loadCategoryIcons()
   
   const sourcesDir = path.resolve(__dirname, "external-repos/waterpath-data")
   const sourceFiles = fs.readdirSync(sourcesDir, {recursive: true})
@@ -313,6 +389,10 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
       const parent = path.basename(path.dirname(file))
       const rawPackage = fs.readFileSync(packagePath, "utf-8")
       const package = JSON.parse(rawPackage)
+      const categoryName = package.keywords
+        ?.find(keyword => keyword.startsWith("waterpath:"))
+        ?.slice("waterpath:".length)
+      const icon = categoryIcons.get(categoryName) || categoryIcons.get(`${categoryName}_emissions`) || null
 
       createNode({
         id: createNodeId(`${file}-schema`),
@@ -327,7 +407,8 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
           description: package['description'],
           license: package['licenses'],
           source: package['sources'],
-          parent: parent 
+          parent: parent,
+          icon: icon,
         }
       })
     }
