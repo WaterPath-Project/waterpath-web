@@ -31,7 +31,7 @@ const LearnPage = ({data}) => {
     <div className={`mt-12 w-full grid md:grid-cols-3 gap-4`}>
     <div className={`md:col-span-2 font-body text-blue-500`}>
     <h3 className="font-header mb-8 text-2xl text-blue-500 font-bold">Learning resources</h3>
-    <p className="font-body text-blue-500 mb-6 text-sm font-medium">Below you can find a set of practical resources that can help you:<br/>a. get started with using the WaterPath Toolkit.<br/>b. explore different themes of waterborne pathogen modelling using open data and software.</p>
+    <p className="font-body text-blue-500 mb-6 font-body font-medium">Below you can find a set of practical resources that can help you:<br/>a. get started with using the WaterPath Toolkit.<br/>b. explore different themes of waterborne pathogen modelling using open data and software.</p>
     <div className="grid md:grid-cols-2 gap-4 grid-flow-row-dense">
     {(pages.filter((p) => p.path.indexOf('/data') === -1 ).map((p, i) => {
   return <div>
@@ -49,7 +49,7 @@ const LearnPage = ({data}) => {
 
       <div className=" bg-sand-500 rounded-2xl p-10">
         <h3 className="font-header mb-6 text-2xl text-blue-500 font-bold">Data documentation</h3>
-        <p className="font-body text-blue-500 mb-8 text-sm font-medium">Alongside practical documentation, you can find guidance on data sources we use, as well as how these are used and analyzed for modelling purposes.</p>
+        <p className="font-body text-blue-500 mb-8 font-body font-medium">Alongside practical documentation, you can find guidance on data sources we use, as well as how these are used and analyzed for modelling purposes.</p>
         <div className={`grid`}>
       {(pages.filter((p) => p.path.indexOf('/data') !== -1 ).map((p, i) => {
   return <div>

@@ -1,4 +1,5 @@
 import React from "react"
+import { useLocation } from "@gatsbyjs/reach-router";
 import { StaticImage } from "gatsby-plugin-image";
 import { FiGithub, FiGitlab, FiGlobe } from "react-icons/fi";
 import {Link} from "gatsby"
@@ -14,9 +15,15 @@ const links = [
   ]
 
 export default function Layout({ children }) {
+  const { pathname } = useLocation()
+  const normalizedPath = pathname.replace(/^\/+|\/+$/g, "")
+  const pageClass = normalizedPath
+    ? `page-${normalizedPath.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`
+    : "page-home"
+
   return (
       
-    <main className="bg-back-white">
+    <main className={`bg-back-white ${pageClass}`}>
         <Navbar/>
     <div className="max-w-7xl mx-auto">
       {children}

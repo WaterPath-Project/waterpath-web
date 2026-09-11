@@ -38,18 +38,18 @@ const DocPage = ({ data, pageContext }) => {
         
       </div>
     </div>
-    <a href={repo} target="_blank" class="float-right mb-6 text-sm p-6 bg-white rounded-lg">
+    <a href={repo} target="_blank" class="float-right mb-6 text-md p-6 bg-white rounded-lg">
 
-      <span class="mb-2 text-sm font-bold tracking-tight text-blue-500"><a href={repo}>Visit source repository</a></span>
+      <span class="mb-2 text-md font-body tracking-tight text-blue-500"><a href={repo}>Visit source repository</a></span>
       <p class="font-bold text-xs text-gray-500 dark:text-gray-400">Last update: {date.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
         })}</p>
     </a>
-        <div className={`sm:mt-6 md:mt-36 w-full grid grid-flow-row-dense mx-auto font-body text-blue-500  ${!schemasThere && !packagesThere && "md:grid-cols-3 gap-4"}`}>
-          {(!schemasThere && !packagesThere) && <TOC content={data.markdownRemark.tableOfContents}/>}
-          <div className={`main-content font-body text-blue-500 font-medium ${!schemasThere && !packagesThere && "md:col-span-2"}`} dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+        <div className={`sm:mt-6 md:mt-36 w-full min-w-0 grid grid-flow-row-dense mx-auto font-body text-blue-500  ${!schemasThere && !packagesThere && "md:grid-cols-3 gap-4"}`}>
+          {(!schemasThere && !packagesThere) && <TOC headings={data.markdownRemark.headings}/>}
+          <div className={`main-content min-w-0 font-body text-blue-500 font-medium font-body ${!schemasThere && !packagesThere && "md:col-span-2"}`} dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
         </div>
         {schemasThere && (
           <>
@@ -119,7 +119,11 @@ export const query = graphql`
   query MarkdownById($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
-      tableOfContents
+      headings {
+        id
+        value
+        depth
+      }
       fields {
         docName
         repo

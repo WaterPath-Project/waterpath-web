@@ -19,11 +19,11 @@ export default ({location}) => {
   return (
     <Layout>
   <div className={"w-full max-w-xl mx-auto mt-48"}>
-      {(success && !closedPrompt) && <div id="alert-border-3" class="mt-12 flex items-center container p-4 mb-4 text-blue-500 border-t-4 border-green-500 bg-green-500 " role="alert">
+      {(success && !closedPrompt) && <div id="alert-border-3" class="mt-12 flex items-center container p-4 mb-4 text-blue-500 border-t-4 border-green-500 bg-green-500 font-body" role="alert">
     <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
       <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
     </svg>
-    <div class="ms-3 text-sm font-medium">
+    <div class="ms-3 text-md font-body">
       Your message has been sent to the WaterPath team. We will reach out to you soon!
     </div>
     <button onClick={() => {setSuccess(false); setClosedPrompt(true)}} type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-500 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-500 p-1.5 hover:bg-blue-500 hover:text-white inline-flex items-center justify-center h-8 w-8"  data-dismiss-target="#alert-border-3" aria-label="Close">
